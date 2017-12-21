@@ -1,0 +1,38 @@
+@mixin equalSpaced( $num_of_cols, $gutter, $width:100%  ){
+  width: ( $width - ( $gutter * ($num_of_cols - 1) ) ) / $num_of_cols;
+  margin-left: $gutter;
+  float: left;
+
+  &:first-child{
+    margin-left: 0;
+  }
+}
+
+@mixin colorMixin($bgc, $clr) {
+    background-color: $bgc;
+    color: $clr;
+}
+
+@mixin content2padding($fontSize, $paddingTopBottom, $paddingRightLeft) {
+    font-size: $fontSize;
+    padding: $paddingTopBottom $paddingRightLeft;
+}
+
+@mixin content3padding($fontSize, $paddingTop, $paddingRightLeft, $paddingBottom) {
+    font-size: $fontSize;
+    padding: $paddingTop $paddingRightLeft $paddingBottom;
+}
+
+@mixin content4padding($fontSize, $paddingTop, $paddingRight, $paddingBottom, $paddingLeft) {
+    font-size: $fontSize;
+    padding: $paddingTop $paddingRight $paddingBottom $paddingLeft;
+}
+
+@mixin fa_lg($dsply, $clr, $vrtclAlign, $flt, $fontSize, $lnHeight) {
+    display: $dsply;
+    color: $clr;
+    vertical-align: $vrtclAlign;
+    float: $flt;
+    font-size: $fontSize;
+    line-height: $lnHeight;
+}

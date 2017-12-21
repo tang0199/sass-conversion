@@ -1,1 +1,228 @@
-// main SASS file
+@import 'variables';
+@import 'mixins';
+
+
+*{
+    padding:0;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+   
+   &:after,&:before{
+      -webkit-box-sizing: inherit;
+      box-sizing: inherit;
+   }
+}
+
+html{
+    font-size: 16px;
+    font-family: $font-stack-sans;
+    line-height: 1.6;
+}
+h1, h2, h3, h4{
+    font-family: $font-stack-serif;
+}
+ul{
+    list-style: none;
+}
+
+.clearfix:after{
+    display:table;
+    clear: both;
+    content: "";
+}
+
+.bg-header{
+    @include colorMixin($color-lightBlue, $color-darkGrey);
+    border-bottom:1rem solid $color-medBlue;
+    border-top:1rem solid $color-darkBlue;
+    position: relative;
+   
+   &:before, &:after{
+      content:"";
+      position:absolute;
+      bottom:-1rem;
+      width:30%;
+      height:1rem;
+      background-color: $color-darkBlue;
+   }
+   
+   &:before{
+     left:0; 
+   }
+   
+   &:after{
+      right:0;
+   }
+}
+
+
+.bg-focal{
+    @include colorMixin($color-lightBrown, $color-darkBrown);
+}
+.bg-content1{
+    @include colorMixin($color-white, $color-darkGrey);
+}
+.bg-content2{
+    @include colorMixin($color-lightBlue, $color-darkBlue);
+}
+.bg-footer{
+    @include colorMixin($color-white, $color-lightGrey);
+}
+header{
+    width: 400px;
+    margin: 0 auto;
+    position: relative;
+   
+   h1{
+      width: 100%;
+      padding: 0 2rem;
+   }
+   
+   nav{
+      width: 100%;
+   }
+   
+   nav>ul li{
+      width:100%;
+      float: none;
+   }
+}
+section{
+   &.focal{
+    width: 400px;
+    margin: 0 auto;
+   }
+   &.content1, &.content2{
+    padding: 2rem 0;
+   }
+}
+
+
+.row{
+    clear: both;
+}
+.col-2{
+    width:50%;
+    float:left;
+    padding-bottom: 2rem;
+    border-left:1px solid $color-darkBlue;
+    margin-bottom: 2rem;
+}
+
+footer{
+    padding:2rem 0;
+   
+   & .col-2:first-child{
+    border-left: 0;
+   }
+}
+
+header{
+   & nav{
+    padding:2rem 0;
+    @extend .row;
+   }
+   & nav>ul>li>a{
+    @include colorMixin($color-white, $color-darkGrey);
+    display:block;
+    text-align: center;
+    text-decoration: none;   
+    font-size: 1.414rem;
+    letter-spacing: 0.25rem;
+    border:1px solid $color-lightGrey; 
+    border-bottom: none;
+    padding:1.0rem 2rem;
+    line-height: 1;
+   }
+   & nav>ul>li>a:hover{
+    font-weight: 700;
+    color:$color-darkBrown;
+   }
+}
+
+
+header{
+   & h1{
+    color: $color-darkBrown;
+    letter-spacing: 0.1rem;
+   }
+   & h1 i.fa-lg{
+    display:block;
+    width: 25%;
+    float:left;
+    font-size: 7rem;
+    line-height: 12.7936rem;
+    color: $color-lightBrown;
+   }
+   & h1 i.fa-lg ~ span{
+    float: right;
+    width: 75%;
+    font-size: 3.998rem;
+    padding-left: 1rem;
+    text-align: right;
+   }
+}
+
+.focal{
+   & h2{
+    @include content4padding(1.999rem, 2rem, 2rem, 1rem, 2rem);
+    line-height: 1.2;
+   }
+   & .author{
+    @include content3padding(1rem, 0.2rem, 2rem, 2rem);
+   }
+} 
+
+.content1{
+   & h3{
+    @include content3padding(1.999rem, 0.2rem, 2rem, 2rem);
+   } 
+   & h3 i{
+    vertical-align:middle;
+    padding-right: 2rem;
+   }
+   & p{
+    @include content3padding(1.414rem, 0.5rem, 2rem, 2rem);
+   }
+}
+
+.content2{
+   & h3{
+    @include content3padding(1.999rem, 1rem, 2rem, 0.5rem);
+   }
+   & h4{
+    @include content3padding(1.999rem, 1rem, 2rem, 0rem);
+   }
+   & p{
+    @include content3padding(1.414rem, 0.5rem, 2rem, 1rem);
+   }
+   & li{
+    @include content2padding(1.414rem, 0.5rem, 2rem);
+   }
+} 
+
+footer{
+   & h4{
+    @include content2padding(1.414rem, 0.5rem, 2rem);
+    color: $color-darkBrown;
+   }
+   & p{
+    @include content2padding(1rem, 0.5rem, 2rem);
+    color: $color-darkGrey;
+   }
+   & .fa-circle{
+    color: $color-darkGrey;
+   }
+} 
+
+footer{
+   & h4[lang=de]{
+   display:block;
+   }
+   & h4[lang=en], & h4[lang=ar], & h4[lang=ru]{
+    display:none;
+   }
+} 
+
+@import 'queries';
